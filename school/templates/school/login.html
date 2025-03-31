@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCHOOL48/Login page</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <aside>
+        <a href="{% url 'home' %}" class="logo">
+            <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+            <figcaption>SCHOOL</figcaption>
+        </a>
+        <div class="opt"><p>Menu</p></div>
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">
+                    <figure><img src="{% static 'images/home.png' %}" alt="home"></figure>
+                    <figcaption>Acceuil</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">
+                    <figure><img src="{% static 'images/user.png' %}" alt="profil"></figure>
+                    <figcaption>Profile</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/sms.png' %}" alt="Messages"></figure>
+                    <figcaption>Messages</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/course.png' %}" alt="Cours"></figure>
+                    <figcaption>Cours</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/result.png' %}" alt="Resultats"></figure>
+                    <figcaption>Resultats</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/event.png' %}" alt="Evenements"></figure>
+                    <figcaption>Evenements</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/settings.png' %}" alt="Parametres"></figure>
+                    <figcaption>Parametres</figcaption>
+                </a>
+            </li>
+        </ul>
+        <footer>
+            <a href="{% url 'home' %}" class="logo2">
+                <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+                <figcaption>SCHOOL</figcaption>
+            </a>
+            <ul>
+                <li><a href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/x.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/gmail.png' %}" alt=""></a></li>
+            </ul>
+            <span class="copy">
+                &copy;Copyright 2025, Takus SCHOOL 48. All right reserved
+            </span>
+        </footer>
+    </aside>
+    <main>
+        <header>
+            <button class="menu">
+                <hr>
+            </button>
+            <div class="search">
+                <input type="search" placeholder="Rechercher...">
+                <button type="submit">
+                    <img src="{% static 'images/loope.png' %}" alt="">
+                </button>
+            </div>
+            <a href="#" class="notif"><img src="{% static 'images/bell.png' %}" alt="bell"></a>
+        </header>
+        <section>
+            <div class="left">
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <input type="text" name="username" id="name" class="name" placeholder="Enter your name here" required>
+                    <div class="pass">
+                        <input type="password" name="password" id="pas1" placeholder="Enter your password here" required>
+                        <button type="button"><img src="{% static 'images/eye.png' %}" alt=""></button>
+                    </div>
+                    <input type="submit" value="Sign In">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                    <a href="{% url 'type_account' %}" class="log">Sign In</a>
+                </form>
+                <b>Or</b>
+                <div class="account">
+                    <p>User:</p>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'images/google.png' %}" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'images/facebook.png' %}" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'images/yahoo.png' %}" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <b>Or</b>
+                <div class="ctaSignIn">
+                    <a href="{% url 'register_teacher' %}" class="btn1">Sign Up</a>
+                    <p>*(If you don't have an account yet)</p>
+                </div>
+            </div>
+            <div class="right">
+                <figure><img src="{% static 'images/logoBig.png' %}" alt=""></figure>
+                <h1>Let us connected !</h1>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

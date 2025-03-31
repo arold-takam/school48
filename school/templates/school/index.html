@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCHOOL48</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <aside>
+        <a href="{% url 'home' %}" class="logo">
+            <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+            <figcaption>SCHOOL</figcaption>
+        </a>
+        <div class="opt"><p>Menu</p></div>
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">
+                    <figure><img src="{% static 'images/home.png' %}" alt="home"></figure>
+                    <figcaption>Acceuil</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">
+                    <figure><img src="{% static 'images/user.png' %}" alt="profil"></figure>
+                    <figcaption>Profile</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/sms.png' %}" alt="Messages"></figure>
+                    <figcaption>Messages</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/course.png' %}" alt="Cours"></figure>
+                    <figcaption>Cours</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/result.png' %}" alt="Resultats"></figure>
+                    <figcaption>Resultats</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/event.png' %}" alt="Evenements"></figure>
+                    <figcaption>Evenements</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/settings.png' %}" alt="Parametres"></figure>
+                    <figcaption>Parametres</figcaption>
+                </a>
+            </li>
+        </ul>
+        <footer>
+                <a href="{% url 'home' %}" class="logo2">
+                    <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+                    <figcaption>SCHOOL</figcaption>
+                </a>
+                <ul>
+                    <li><a href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a></li>
+                    <li><a href="#"><img src="{% static 'images/x.png' %}" alt=""></a></li>
+                    <li><a href="#"><img src="{% static 'images/gmail.png' %}" alt=""></a></li>
+                </ul>
+                <span class="copy">
+                    &copy;Copyright 2025, Takus SCHOOL 48. All right reserved
+                </span>
+        </footer>
+    </aside>
+    <main>
+        <header>
+            <button class="menu">
+                <hr>
+            </button>
+            <div class="search">
+                <input type="search" placeholder="Rechercher...">
+                <button type="submit">
+                    <img src="{% static 'images/loope.png' %}" alt="">
+                </button>
+            </div>
+            <a href="#" class="notif"><img src="{% static 'images/bell.png' %}" alt="bell"></a>
+        </header>
+        <section>
+            <div class="hero">
+                <div class="left">
+                    <h1>Une autre facon de voire l'education</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias atque aut autem cumque eius enim expedita fugiat molestiae natus, quod sapiente similique unde.
+                    </p>
+                    <div class="btn">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'type_account' %}" class="btn1">MY DASHBOARD</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn1">JOIN US NOW</a>
+                        {% endif %}
+                        <button class="btn2">SEE MORE</button>
+                    </div>
+                </div>
+                <div class="right">
+                    <figure>
+                        <img src="{% static 'images/logoBig.png' %}" alt="heroPicture">
+                    </figure>
+                </div>
+            </div>
+            <div class="features">
+                <div class="up">
+                    <h2>What new here?</h2>
+                    <div class="pages">
+                        <button class="lf"><img src="{% static 'images/arrow.png' %}" alt=""></button>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="rg"><img src="{% static 'images/arrow.png' %}" alt=""></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <ul>
+                        <li>
+                            <figure><img src="{% static 'images/feaature.png' %}" alt=""></figure>
+                            <h3>Feature Title</h3>
+                            <div class="star">
+                                <b>Class level</b>
+                                <ul>
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                </ul>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </p>
+                            <button>Consult this feature</button>
+                        </li>
+                        <!-- Répété pour les autres éléments -->
+                        {% for feature in features %}
+                        <li>
+                            <figure><img src="{% static 'images/feaature.png' %}" alt=""></figure>
+                            <h3>{{ feature.title }}</h3>
+                            <div class="star">
+                                <b>Class level</b>
+                                <ul>
+                                    {% for _ in feature.stars %}
+                                    <li><img src="{% static 'images/star.png' %}" alt=""></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <p>{{ feature.description }}</p>
+                            <button>Consult this feature</button>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

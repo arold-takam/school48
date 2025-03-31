@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCHOOL48/SignIn Page</title>
+    <link rel="stylesheet" href="{% static 'css/signUpTeacher.css' %}">
+</head>
+<body>
+<aside>
+    <a href="{% url 'home' %}" class="logo">
+        <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+        <figcaption>SCHOOL</figcaption>
+    </a>
+    <div class="opt"><p>Menu</p></div>
+    <ul>
+        <li>
+            <a href="{% url 'home' %}">
+                <figure><img src="{% static 'images/home.png' %}" alt="home"></figure>
+                <figcaption>Acceuil</figcaption>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'login' %}">
+                <figure><img src="{% static 'images/user.png' %}" alt="profil"></figure>
+                <figcaption>Profile</figcaption>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <figure><img src="{% static 'images/sms.png' %}" alt="Messages"></figure>
+                <figcaption>Messages</figcaption>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <figure><img src="{% static 'images/course.png' %}" alt="Cours"></figure>
+                <figcaption>Cours</figcaption>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <figure><img src="{% static 'images/result.png' %}" alt="Resultats"></figure>
+                <figcaption>Resultats</figcaption>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <figure><img src="{% static 'images/event.png' %}" alt="Evenements"></figure>
+                <figcaption>Evenements</figcaption>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <figure><img src="{% static 'images/settings.png' %}" alt="Parametres"></figure>
+                <figcaption>Parametres</figcaption>
+            </a>
+        </li>
+    </ul>
+    <footer>
+        <a href="{% url 'home' %}" class="logo2">
+            <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+            <figcaption>SCHOOL</figcaption>
+        </a>
+        <ul>
+            <li><a href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a></li>
+            <li><a href="#"><img src="{% static 'images/x.png' %}" alt=""></a></li>
+            <li><a href="#"><img src="{% static 'images/gmail.png' %}" alt=""></a></li>
+        </ul>
+        <span class="copy">
+            &copy;Copyright 2025, Takus SCHOOL 48. All right reserved
+        </span>
+    </footer>
+</aside>
+    <main>
+        <header>
+            <button class="menu">
+                <hr>
+            </button>
+            <div class="search">
+                <input type="search" placeholder="Rechercher...">
+                <button type="submit">
+                    <img src="{% static 'images/loope.png' %}" alt="">
+                </button>
+            </div>
+            <a href="#" class="notif"><img src="{% static 'images/bell.png' %}" alt="bell"></a>
+        </header>
+        <section>
+            <form method="post" action="{% url 'register_teacher' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Inscription Enseignant</legend>
+
+                    <!-- Informations de base -->
+                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur*" class="put" required>
+                    <input type="email" name="email" id="email" placeholder="Email*" class="put" required>
+                    <input type="password" name="password1" id="password1" placeholder="Mot de passe*" class="put" required>
+                    <input type="password" name="password2" id="password2" placeholder="Confirmer le mot de passe*" class="put" required>
+                    <input type="tel" name="phone" id="phone" placeholder="Téléphone" class="put">
+
+                    <!-- Genre (adapté à votre modèle) -->
+                    <div class="gender">
+                        <b>Genre*:</b>
+                        <span>
+                            <input type="radio" name="gender" id="male" value="M" required>
+                            <label for="male">Masculin</label>
+                        </span>
+                        <span>
+                            <input type="radio" name="gender" id="female" value="F">
+                            <label for="female">Féminin</label>
+                        </span>
+                    </div>
+
+                    <!-- Photo de profil -->
+                    <div class="photo-upload">
+                        <label for="photo">Photo de profil:</label>
+                        <input type="file" name="photo" id="photo" accept="image/*">
+                    </div>
+
+                    <!-- Informations professionnelles -->
+                    <h3>Informations Professionnelles</h3>
+                    <select name="diploma" class="put" id="diploma" required>
+                        <option value="">-- Sélectionnez votre diplôme --</option>
+                        <option value="licence">Licence</option>
+                        <option value="master">Master</option>
+                        <option value="phd">Doctorat</option>
+                    </select>
+
+                    <input type="text" name="specialization" id="specialization" placeholder="Spécialisation*" class="put" required>
+
+                    <div class="hire">
+                        <label for="hiring_date">Date d'embauche:</label>
+                        <input type="date" name="hiring_date" id="hiring_date" class="put" required>
+                    </div>
+
+                    <!-- Bouton de soumission -->
+                    <input type="submit" value="S'inscrire" class="btn-submit">
+
+                    <div class="auth-links">
+                        <p>Déjà inscrit? <a href="{% url 'login' %}">Connectez-vous</a></p>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="images">
+                <img src="{% static 'images/Des Sports.png' %}" alt="">
+                <img src="{% static 'images/Médias.png' %}" alt="">
+                <img src="{% static 'images/Tâche De Groupe.png' %}" alt="">
+                <img src="{% static 'images/Cerveau.png' %}" alt="">
+                <img src="{% static 'images/Étudier.png' %}" alt="">
+                <img src="{% static 'images/Nombre Carré.png' %}" alt="">
+                <img src="{% static 'images/Mathématiques.png' %}" alt="">
+                <img src="{% static 'images/Physique.png' %}" alt="">
+                <img src="{% static 'images/Tube À Essai.png' %}" alt="">
+                <img src="{% static 'images/Dessin.png' %}" alt="">
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCHOOL48/DashBoard-Teacher</title>
+    <link rel="stylesheet" href="{% static 'css/dashboardTeacher.css' %}">
+</head>
+<body>
+    <aside>
+        <a href="{% url 'home' %}" class="logo">
+            <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+            <figcaption>SCHOOL</figcaption>
+        </a>
+        <div class="opt"><p>Menu</p></div>
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">
+                    <figure><img src="{% static 'images/home.png' %}" alt="home"></figure>
+                    <figcaption>Acceuil</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">
+                    <figure><img src="{% static 'images/user.png' %}" alt="profil"></figure>
+                    <figcaption>Profile</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/sms.png' %}" alt="Messages"></figure>
+                    <figcaption>Messages</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/course.png' %}" alt="Cours"></figure>
+                    <figcaption>Cours</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/result.png' %}" alt="Resultats"></figure>
+                    <figcaption>Resultats</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/event.png' %}" alt="Evenements"></figure>
+                    <figcaption>Evenements</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/settings.png' %}" alt="Parametres"></figure>
+                    <figcaption>Parametres</figcaption>
+                </a>
+            </li>
+        </ul>
+        <footer>
+            <a href="{% url 'home' %}" class="logo2">
+                <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+                <figcaption>SCHOOL</figcaption>
+            </a>
+            <ul>
+                <li><a href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/x.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/gmail.png' %}" alt=""></a></li>
+            </ul>
+            <span class="copy">
+                &copy;Copyright 2025, Takus SCHOOL 48. All right reserved
+            </span>
+        </footer>
+    </aside>
+    <main>
+        <header>
+            <button class="menu">
+                <hr>
+            </button>
+            <div class="search">
+                <input type="search" placeholder="Rechercher...">
+                <button type="submit">
+                    <img src="{% static 'images/loope.png' %}" alt="">
+                </button>
+            </div>
+            <a href="#" class="notif"><img src="{% static 'images/bell.png' %}" alt="bell"></a>
+        </header>
+        <article>
+            <h1>Teacher's board</h1>
+            <nav>
+                <span><a href="{% url 'dashboard_teacher' %}">Profil</a></span>
+                <ul>
+                    <li><a href="#">Gestion des cours</a></li>
+                    <li><a href="#">Gestion des notes</a></li>
+                    <li><a href="#">Gestion de la discipline</a></li>
+                </ul>
+            </nav>
+        </article>
+        <section>
+            <div class="info">
+                <div class="picture">
+                    <figure>
+                        {% if teacher.user.photo %}
+                            <img src="{{ teacher.user.photo.url }}" alt="Profile Photo">
+                        {% else %}
+                            <img src="{% static 'images/user.png' %}" alt="Default Profile">
+                        {% endif %}
+                    </figure>
+                    <figcaption>{{ teacher.user.username }}</figcaption>
+                </div>
+                <div class="details">
+                    <h2>Personal information</h2>
+                    <div>
+                        <span>
+                            <b>Mail:</b>
+                            <p>{{ teacher.user.email }}</p>
+                        </span>
+                        <div id="lien">
+                            <a href="#">Edit your profile</a>
+                            <a href="{% url 'logout' %}">LOGOUT</a>
+                        </div>
+                    </div>
+                    <div>
+                        <span>
+                            <b>Location:</b>
+                            <p>{{ teacher.user.address|default:"Yaounde" }}</p>
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <b>Phone:</b>
+                            <p>{{ teacher.user.phone|default:"+237651*********66" }}</p>
+                        </span>
+                    </div>
+                    <div>
+                        <span>
+                            <b>Last connexion:</b>
+                            <p>{{ teacher.user.last_connexion|date:"d/m/Y" }}</p>
+                        </span>
+                    </div>
+                    <a href="#">
+                        <p>View more</p>
+                        <img src="{% static 'images/eye.png' %}" alt="eye">
+                    </a>
+                </div>
+            </div>
+            <div class="features">
+                <div class="up">
+                    <h2>Objectifs for this week</h2>
+                    <div class="pages">
+                        <button class="lf"><img src="{% static 'images/arrow.png' %}" alt=""></button>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="rg"><img src="{% static 'images/arrow.png' %}" alt=""></button>
+                    </div>
+                </div>
+                <div class="card">
+                    <ul>
+                        {% for course in teacher.classes_taught.all %}
+                        <li>
+                            <figure><img src="{% static 'images/feaature.png' %}" alt=""></figure>
+                            <a href="#"><h3>{{ course.name }}</h3></a>
+                            <p>
+                                {{ course.description|default:"Lorem ipsum dolor sit amet, consectetur adipisicing elit." }}
+                            </p>
+                            <div class="status">
+                                <span>
+                                    <b>70%</b>
+                                    <p>Completed</p>
+                                </span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

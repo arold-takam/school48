@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCHOOL48/Type of account</title>
+    <link rel="stylesheet" href="{% static 'css/typeAccount.css' %}">
+</head>
+<body>
+    <aside>
+        <a href="{% url 'home' %}" class="logo">
+            <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+            <figcaption>SCHOOL</figcaption>
+        </a>
+        <div class="opt"><p>Menu</p></div>
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">
+                    <figure><img src="{% static 'images/home.png' %}" alt="home"></figure>
+                    <figcaption>Acceuil</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'login' %}">
+                    <figure><img src="{% static 'images/user.png' %}" alt="profil"></figure>
+                    <figcaption>Profile</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/sms.png' %}" alt="Messages"></figure>
+                    <figcaption>Messages</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/course.png' %}" alt="Cours"></figure>
+                    <figcaption>Cours</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/result.png' %}" alt="Resultats"></figure>
+                    <figcaption>Resultats</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/event.png' %}" alt="Evenements"></figure>
+                    <figcaption>Evenements</figcaption>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <figure><img src="{% static 'images/settings.png' %}" alt="Parametres"></figure>
+                    <figcaption>Parametres</figcaption>
+                </a>
+            </li>
+        </ul>
+        <footer>
+            <a href="{% url 'home' %}" class="logo2">
+                <figure><img src="{% static 'images/logoBig.png' %}" alt="School 48 logo"></figure>
+                <figcaption>SCHOOL</figcaption>
+            </a>
+            <ul>
+                <li><a href="#"><img src="{% static 'images/facebook.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/x.png' %}" alt=""></a></li>
+                <li><a href="#"><img src="{% static 'images/gmail.png' %}" alt=""></a></li>
+            </ul>
+            <span class="copy">
+                &copy;Copyright 2025, Takus SCHOOL 48. All right reserved
+            </span>
+        </footer>
+    </aside>
+    <main>
+        <header>
+            <button class="menu">
+                <hr>
+            </button>
+            <div class="search">
+                <input type="search" placeholder="Rechercher...">
+                <button type="submit">
+                    <img src="{% static 'images/loope.png' %}" alt="">
+                </button>
+            </div>
+            <a href="#" class="notif"><img src="{% static 'images/bell.png' %}" alt="bell"></a>
+        </header>
+        <section>
+            <h1>Select your type of account</h1>
+            <span>
+                <div class="line1">
+                    <a href="#">
+                        <figure><img src="{% static 'images/user.png' %}" alt=""></figure>
+                        <figcaption>Administrator</figcaption>
+                    </a>
+                </div>
+                <div class="line2">
+                    <a href="{% url 'register_teacher' %}">
+                        <figure><img src="{% static 'images/user.png' %}" alt=""></figure>
+                        <figcaption>Teacher</figcaption>
+                    </a>
+                    <span><img src="{% static 'images/logoBig.png' %}" alt=""></span>
+                    <a href="#">
+                        <figure><img src="{% static 'images/user.png' %}" alt=""></figure>
+                        <figcaption>Parent</figcaption>
+                    </a>
+                </div>
+                <div class="line3">
+                    <a href="#">
+                        <figure><img src="{% static 'images/user.png' %}" alt=""></figure>
+                        <figcaption>Student</figcaption>
+                    </a>
+                </div>
+            </span>
+        </section>
+    </main>
+</body>
+</html>
